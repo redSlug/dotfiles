@@ -1,8 +1,8 @@
-# .dotfiles
+# dotfiles
 All dotfiles kept under version control and symlinks are added to expected locations.
 
 ## Setup
-- export repo_url=https://github.com/redSlug/.dotfiles.git
+- export repo_url=https://github.com/redSlug/dotfiles.git
 - `git clone $repo_url && cd .dotfiles && ./install`
 
 ## Add
