@@ -1,0 +1,47 @@
+[user]
+	name = redslug
+	email = 11279144+redSlug@users.noreply.github.com
+
+[core]
+	editor = emacs
+	excludesfile = /Users/bd/.gitignore
+#[oh-my-zsh]
+#        hide-status = 1
+[alias]
+	s = status
+        sp = !git add -A && git commit -m 'SAVEPOINT'
+	p = pull
+	cm = commit -m
+        ch = checkout
+        cl = git clean -f -d
+	b = branch
+	db = branch -D
+	d = diff
+        fe = fetch origin master
+	re = rebase master
+	undo = reset HEAD~1 --mixed
+	resetfile = checkout --
+	undocommit = git reset HEAD~
+        uncommit = reset --soft HEAD^
+	amend = commit -a --amend
+	log1 = "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative"
+	log2 = "log --all --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative"
+	log3 = "log --all -n10 --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative"
+        log4 = log --graph --decorate --pretty=oneline --abbrev-commit
+        log5 = log --graph --decorate --pretty=oneline --abbrev-commit --all
+        log6 = log --graph --decorate --pretty=oneline --abbrev-commit --all -5
+        log7 = log --graph --decorate --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --all --first-parent
+        ls = ls-files
+        ldiff = log --stat
+        dw = diff --word-diff
+        standup = log --pretty=format:'%Cred%h%Creset -%Creset %s %Cgreen(%cD) %C(bold blue)<%an>%Creset' --since yesterday
+	today = !git log --since=midnight --author=\"$(git config user.name)\" --oneline
+	yesterday = !git log --graph --all --since=\"yesterday.midnight\" --until=\"midnight\" --author=\"$(git config user.name)\" --oneline
+
+[status]
+    submoduleSummary = true
+[filter "lfs"]
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f

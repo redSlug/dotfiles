@@ -1,0 +1,10 @@
+- link:
+    ~/.zshrc:
+      relink: true
+      path: zshrc
+    ~/.gitconfig:
+      relink: true
+      path: gitconfig
+    ~/.gitignore:
+      relink: true
+      path: gitignore
