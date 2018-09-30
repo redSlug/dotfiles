@@ -1,10 +1,8 @@
 
-
-
-
-export PATH="$PATH:usr/local/go"
-export GOPATH="$HOME/Development/rc/go"
-
+ds() {
+    echo docker-compose exec api bash -c "$1"
+    docker-compose exec api bash -c "$1"
+}
 
 function fix_camera {
     echo "Fixing camera"
@@ -13,12 +11,26 @@ function fix_camera {
     echo "done"
 }
 
+
+alias e="emacs"
+alias dshell="docker-compose exec api bash"
+alias dps="docker-compose ps"
+alias dpsa="docker ps -a"
+alias dcps="docker container ls -a"
+alias dck="docker container kill"
+alias drm="docker rm"
+alias dc="docker-compose"
+alias g="git"
+alias so="source"
+
+
+
 alias g=git
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/bd/.oh-my-zsh
+export ZSH=~/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
