@@ -1,0 +1,18 @@
+
+# common
+alias e="emacs"
+alias so="source"
+alias zshconfig="e ~/.zshrc"
+alias ohmyzsh="e ~/.oh-my-zsh"
+
+# docker-compose
+alias dshell="docker-compose exec api bash"
+alias dps="docker-compose ps"
+alias dc="docker-compose"
+
+# docker
+alias dpsa="docker ps -a"
+alias dcps="docker container ls -a"
+alias dck="docker container kill"
+alias drm="docker rm"
+

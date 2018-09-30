@@ -1,0 +1,12 @@
+
+function ds {
+    echo docker-compose exec api bash -c "$1"
+    docker-compose exec api bash -c "$1"
+}
+
+function fix_camera {
+    echo "Fixing camera"
+    echo "sudo killall VDCAssistant"
+    sudo killall VDCAssistant
+    echo "done"
+}

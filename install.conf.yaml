@@ -8,3 +8,9 @@
     ~/.gitignore:
       relink: true
       path: gitignore
+    ~/.functions:
+      relink: true
+      path: functions
+    ~/.alias:
+      relink: true
+      path: aliases
