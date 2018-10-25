@@ -4,6 +4,23 @@ function ds {
     docker-compose exec api bash -c "$1"
 }
 
+function dtests {
+    docker-compose exec api bash -c "./scripts/run_tests.sh -t $1"
+}
+
+function dfeature_tests {
+    docker-compose exec api bash -c "./scripts/run_featuretests.py -f $1"
+}
+
+function dnosetest {
+    docker-compose exec api bash -c "nosetests -Pvs $1"
+}
+
+function clean_and_stash {
+    g clean -fd
+    g stash
+}
+
 function fix_camera {
     echo "Fixing camera"
     echo "sudo killall VDCAssistant"

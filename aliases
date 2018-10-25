@@ -5,10 +5,14 @@ alias so="source"
 alias zshconfig="e ~/.zshrc"
 alias ohmyzsh="e ~/.oh-my-zsh"
 
+# pycharm
+alias remove_pycharm_helpers="docker ps -a | grep -i pycharm | awk '{print $1}' | xargs docker rm"
+
 # docker-compose
 alias dshell="docker-compose exec api bash"
 alias dps="docker-compose ps"
 alias dc="docker-compose"
+alias dclint="docker-compose exec api bash -c ./scripts/lint_changes.py"
 
 # docker
 alias dpsa="docker ps -a"

@@ -13,6 +13,7 @@
         ca = commit -a
         cm = commit -m
         cam = commit -am
+	cle = clean -f
         #############
         p = pull
         #############
@@ -53,7 +54,8 @@
         unc = reset HEAD~
         uncommit = reset HEAD~
         #############
-        sp = !git add -A && git commit -m 'SAVEPOINT'
+	squash = rebase -i HEAD~15
+	sp = !git add -A && git commit -m 'SAVEPOINT'
         standup = log --pretty=format:'%Cred%h%Creset -%Creset %s %Cgreen(%cD) %C(bold blue)<%an>%Creset' --since yesterday
         today = !git log --since=midnight --author=\"$(git config user.name)\" --oneline
         yesterday = !git log --graph --all --since=\"yesterday.midnight\" --until=\"midnight\" --author=\"$(git config user.name)\" --oneline
