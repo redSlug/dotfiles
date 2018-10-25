@@ -27,3 +27,8 @@ function fix_camera {
     sudo killall VDCAssistant
     echo "done"
 }
+
+function stash_and_clean {
+    git clean -f
+    git stash
+}
