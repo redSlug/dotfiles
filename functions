@@ -1,10 +1,39 @@
+function fix_vpn {
+	  sudo ifconfig en0 down
+	   sudo route flush
+	    sudo ifconfig en0 up
+}
+
+function cat_functions_alias {
+	  cat ~/dotfiles/functions
+	   cat ~/dotfiles/aliases
+	    it2attention fireworks
+}
+
+function clear_checksums {
+
+	  # usually I update peloton-liquibase-rollback
+	   cd /api/db/ecommerce/schema/change-logs
+	    liquibase --logLevel=info --defaultsFile=/ecommerce.properties --changeLogFile=changelog-master.json clearCheckSums
+
+	     dc build liquibase
+	      migrate_down
+}
+
+
+function get_password {
+	  boom
+	   cat ~/dotfiles/secrets | grep password
+}
 
 function ds {
+    boom
     echo docker-compose exec api bash -c "$1"
     docker-compose exec api bash -c "$1"
 }
 
 function dtests {
+    boom
     docker-compose exec api bash -c "./scripts/run_tests.sh -t $1"
 }
 
@@ -12,13 +41,37 @@ function dfeature_tests {
     docker-compose exec api bash -c "./scripts/run_featuretests.py -f $1"
 }
 
-function dnosetest {
-    docker-compose exec api bash -c "nosetests -Pvs $1"
+function reconcile_queues {
+	  echo "making sure queues exist"
+	   docker-compose exec api bash -c scripts/deploy/reconcile_queues.py
 }
 
-function clean_and_stash {
-    g clean -fd
-    g stash
+function start_queues {
+    docker-compose exec api bash -c "mq/scripts/start_ecomm.sh local"
+}
+
+function fix_pycharm_helpers {
+	  boom
+	   docker ps -a | grep -i pycharm | awk '{print $1}' | xargs docker rm
+}
+
+
+function fix_pycharm {
+	  docker rm -f $(docker ps -a | grep pycharm_helper | awk '{print $1};')
+	   docker-compose down
+	    echo "Pycharm->File->Invalidate Caches / Restart (choose to invalidate and restart)"
+}
+
+function fix_queues {
+	  boom
+	   reconcile_queues
+	    start_queues
+}
+
+
+function dnosetest {
+    boom
+    docker-compose exec api bash -c "nosetests -Pvs $1"
 }
 
 function fix_camera {
@@ -32,3 +85,32 @@ function stash_and_clean {
     git clean -f
     git stash
 }
+
+
+function fix_memcached {
+	  echo "running flush_all. try brining things up and down too..."
+	   echo 'flush_all' | netcat localhost 11211
+}
+
+function dcmagic {
+	  docker-compose exec magichat psql -U peloton
+	   #echo "psql postgres peloton && c peloton"
+	    #echo ""
+	     #docker-compose exec magichat bash
+}
+
+function dcecommerce {
+	  boom
+	   docker-compose exec ecommerce psql -U peloton
+}
+
+function delete_all_branches {
+    boom
+    git for-each-ref --format '%(refname:short)' refs/heads | grep -v master | xargs git branch -D
+}
+
+function boom {
+    source ~/dotfiles/functions
+    it2attention fireworks
+}
+
