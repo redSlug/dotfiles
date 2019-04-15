@@ -10,6 +10,7 @@ alias remove_pycharm_helpers="docker ps -a | grep -i pycharm | awk '{print $1}' 
 
 # docker-compose
 alias dshell="docker-compose exec api bash"
+alias dpython="docker-compose exec api bash -c 'scripts/shell.sh local'"
 alias dps="docker-compose ps"
 alias dc="docker-compose"
 alias dclint="docker-compose exec api bash -c ./scripts/lint_changes.py"
