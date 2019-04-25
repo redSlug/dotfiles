@@ -18,7 +18,8 @@
         p = pull
         #############
         m = merge
-        #############
+        mm = merge master
+	#############
         a = add
         up = add -up
         #############

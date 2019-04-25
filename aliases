@@ -21,3 +21,11 @@ alias dcps="docker container ls -a"
 alias dck="docker container kill"
 alias drm="docker rm"
 
+# db
+alias run_migrations="docker-compose run liquibase peloton-liquibase"
+alias follow_api="docker logs  api_api_1 -f"
+alias dcecommerce="docker-compose exec ecommerce bash -c 'psql -U peloton'"
+alias dcmagic="docker-compose exec magichat bash -c 'psql -U peloton'"
+
+alias migrate_up="docker-compose run liquibase peloton-liquibase ecommerce
+alias migrate_down="docker-compose run liquibase peloton-liquibase-rollback ecommerce
