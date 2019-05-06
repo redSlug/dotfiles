@@ -27,5 +27,5 @@ alias follow_api="docker logs  api_api_1 -f"
 alias dcecommerce="docker-compose exec ecommerce bash -c 'psql -U peloton'"
 alias dcmagic="docker-compose exec magichat bash -c 'psql -U peloton'"
 
-alias migrate_up="docker-compose run liquibase peloton-liquibase ecommerce
-alias migrate_down="docker-compose run liquibase peloton-liquibase-rollback ecommerce
+alias migrate_up="docker-compose run liquibase peloton-liquibase ecommerce"
+alias migrate_down="docker-compose run liquibase peloton-liquibase-rollback ecommerce"
