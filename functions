@@ -1,3 +1,75 @@
+
+function git_commit_add_with_jira_ticket(){
+	  # Assumes the branch name has the Jira ticket
+	  commit_message=$1
+	  JIRA_TICKET="$(git rev-parse --abbrev-ref HEAD | egrep -o '[A-Z]{2,5}\-[0-9]{1,5}')"
+	  git commit -am "$commit_message (JIRA_TICKET)"
+}
+
+function git_commit_with_jira_ticket(){
+	 # Assumes the branch name has the Jira	ticket
+         commit_message=$1
+         JIRA_TICKET="$(git rev-parse --abbrev-ref HEAD | egrep -o '[A-Z]{2,5}\-[0-9]{1,5}')"
+         git commit -m	    "$commit_message (JIRA_TICKET)"
+}
+
+function gcamecho(){
+         commit_message=$1
+         JIRA_TICKET="$(git rev-parse --abbrev-ref HEAD | egrep -o '[A-Z]{2,5}\-[0-9]{1,5}')"
+         echo "$commit_message (JIRA_TICKET)"
+}
+
+### for bash shell, it's /bin/bash not /bin/zsh
+function _okta_aws_shell() {
+    aws-okta exec -a 10h -t 10h "${1:-peloeng}" -- /bin/zsh
+}
+
+alias oawsh="_okta_aws_shell"
+
+function _okta_aws() {
+  aws-okta exec -a 10h -t 10h peloeng -- aws "$@"
+}
+
+alias oaws="_okta_aws"
+
+
+
+
+dlint(){
+	docker-compose exec api bash -c ./scripts/lint.sh
+}
+
+mochi_build(){
+	  aws-okta exec peloeng -- docker-compose build
+}
+
+mochi_up(){
+	  aws-okta exec peloeng -- docker-compose up
+}
+
+mochi_lint(){
+	docker-compose exec api bash -c "scripts/lint.sh && cat pylint_output.txt"
+}
+
+mochi_build_up() {
+		 aws-okta exec peloeng -- docker-compose build
+		 aws-okta exec peloeng -- docker-compose up
+}
+
+mochi_shell() {
+	      aws-okta exec peloeng -- docker-compose exec api bash -c "ipython"
+}
+
+mochi_load_int_enum(){
+	aws-okta exec peloeng -- docker-compose exec api bash -c "scripts/manage.py int_enum_loader"
+}
+
+mochi_bash(){
+	aws-okta exec peloeng -- docker-compose exec api bash
+}
+
+
+
 function fix_vpn {
 	  sudo ifconfig en0 down
 	   sudo route flush
@@ -12,7 +84,6 @@ function cat_functions_alias {
 
 function clear_checksums {
 
-	  # usually I update peloton-liquibase-rollback
 	   cd /api/db/ecommerce/schema/change-logs
 	    liquibase --logLevel=info --defaultsFile=/ecommerce.properties --changeLogFile=changelog-master.json clearCheckSums
 
@@ -26,10 +97,14 @@ function get_password {
 	   cat ~/dotfiles/secrets | grep password
 }
 
-function ds {
+function drun_script {
     boom
     echo docker-compose exec api bash -c "$1"
     docker-compose exec api bash -c "$1"
+}
+
+function dpytest {
+	 docker-compose exec api bash -c "pytest $1"
 }
 
 function dtests {
@@ -47,7 +122,8 @@ function reconcile_queues {
 }
 
 function start_queues {
-    docker-compose exec api bash -c "mq/scripts/start_ecomm.sh local"
+    #docker-compose exec api bash -c "mq/scripts/start_ecomm.sh local"
+    docker-compose exec api bash -c "mq/scripts/start.sh local ecomm_scheduler"
 }
 
 function fix_pycharm_helpers {
@@ -58,14 +134,14 @@ function fix_pycharm_helpers {
 
 function fix_pycharm {
 	  docker rm -f $(docker ps -a | grep pycharm_helper | awk '{print $1};')
-	   docker-compose down
-	    echo "Pycharm->File->Invalidate Caches / Restart (choose to invalidate and restart)"
+	  docker-compose down
+	  echo "Pycharm->File->Invalidate Caches / Restart (choose to invalidate and restart)"
 }
 
 function fix_queues {
 	  boom
-	   reconcile_queues
-	    start_queues
+	  reconcile_queues
+	  start_queues
 }
 
 
@@ -94,14 +170,10 @@ function fix_memcached {
 
 function dcmagic {
 	  docker-compose exec magichat psql -U peloton
-	   #echo "psql postgres peloton && c peloton"
-	    #echo ""
-	     #docker-compose exec magichat bash
 }
 
 function dcecommerce {
-	  boom
-	   docker-compose exec ecommerce psql -U peloton
+	 docker-compose exec ecommerce psql -U peloton
 }
 
 function delete_all_branches {

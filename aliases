@@ -1,4 +1,12 @@
 
+# kubernetes
+alias k="kubectl"
+
+# cd
+alias cd_mochi='cd ~/Development/mochi'
+alias cd_api='cd ~/Development/api'
+alias cd_chefrepo='cd ~/Development/chef-repo'
+
 # common
 alias e="emacs"
 alias so="source"
@@ -27,5 +35,11 @@ alias follow_api="docker logs  api_api_1 -f"
 alias dcecommerce="docker-compose exec ecommerce bash -c 'psql -U peloton'"
 alias dcmagic="docker-compose exec magichat bash -c 'psql -U peloton'"
 
+alias decommerce="docker-compose exec ecommerce psql -U peloton"
+
+
 alias migrate_up="docker-compose run liquibase peloton-liquibase ecommerce"
 alias migrate_down="docker-compose run liquibase peloton-liquibase-rollback ecommerce"
+
+# lint
+alias kronos_lint="./gradlew ktlint"

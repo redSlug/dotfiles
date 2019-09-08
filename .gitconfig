@@ -1,0 +1,75 @@
+[user]
+        email = 11279144+redSlug@users.noreply.github.com
+        name = Brad Dettmer
+        username = redslug
+[core]
+        editor = emacs
+        excludesfile = ~/.gitignore
+[alias]
+        ch = checkout
+        chb = checkout -b
+        chm = checkout master
+        c = commit
+        ca = commit -a
+        cm = commit -m
+        cam = commit -am
+	cle = clean -f
+        #############
+        p = pull
+        #############
+        m = merge
+        mm = merge master
+	#############
+        a = add
+        up = add -up
+        #############
+        b = branch
+        bdd = branch -D
+        bm = branch -m
+        #############
+        ch = checkout
+        #############
+        d = diff
+        #############
+        l = log --oneline
+        l0 = log --oneline --graph --decorate
+        l1 = "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative"
+        l2 = "log --all --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative"
+        l3 = "log --all -n10 --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative"
+        l4 = log --graph --decorate --pretty=oneline --abbrev-commit
+        l5 = log --graph --decorate --pretty=oneline --abbrev-commit --all
+        l6 = log --graph --decorate --pretty=oneline --abbrev-commit --all -5
+        l7 = log --graph --decorate --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --all --first-parent
+        #############
+        ls = ls-files
+        lsf = !git ls-files | grep -i
+        ldiff = log --stat
+        dw = diff --word-diff
+        #############
+        s = status
+        sb = status -s -b
+        #############
+        amend = commit -a --amend
+        resetfile = checkout --
+        undo = reset --soft HEAD~
+        unc = reset HEAD~
+        uncommit = reset HEAD~
+        #############
+	squash = rebase -i HEAD~15
+	sp = !git add -A && git commit -m 'SAVEPOINT'
+        standup = log --pretty=format:'%Cred%h%Creset -%Creset %s %Cgreen(%cD) %C(bold blue)<%an>%Creset' --since yesterday
+        today = !git log --since=midnight --author=\"$(git config user.name)\" --oneline
+        yesterday = !git log --graph --all --since=\"yesterday.midnight\" --until=\"midnight\" --author=\"$(git config user.name)\" --oneline
+[push]
+        default = current
+
+#[oh-my-zsh]
+#        hide-status = 1
+#
+#[status]
+#    submoduleSummary = true
+#[filter "lfs"]
+#	smudge = git-lfs smudge -- %f
+#	process = git-lfs filter-process
+#	required = true
+#	clean = git-lfs clean -- %f

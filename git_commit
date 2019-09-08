@@ -1,0 +1,21 @@
+
+
+function git_commit_add_with_jira_ticket(){
+	 # Assumes the branch name has the Jira ticket
+	 commit_message=$1
+	 JIRA_TICKET="$(git rev-parse --abbrev-ref HEAD | egrep -o '[A-Z]{2,5}\-[0-9]{1,5}')"
+	 git commit -am "$commit_message (JIRA_TICKET)"
+}
+
+function git_commit_with_jira_ticket(){
+	 # Assumes the branch name has the Jira	ticket
+         commit_message=$1
+         JIRA_TICKET="$(git rev-parse --abbrev-ref HEAD | egrep -o '[A-Z]{2,5}\-[0-9]{1,5}')"
+         git commit -m	"$commit_message (JIRA_TICKET)"
+}
+
+function gcamecho(){
+         commit_message=$1
+         JIRA_TICKET="$(git rev-parse --abbrev-ref HEAD | egrep -o '[A-Z]{2,5}\-[0-9]{1,5}')"
+         echo "$commit_message (JIRA_TICKET)"
+}
