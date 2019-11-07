@@ -46,7 +46,7 @@ mochi_up(){
       aws-okta exec peloeng -- docker-compose up
 }
 mochi_lint(){
-    docker-compose exec api bash -c "scripts/lint.sh && cat pylint_output.txt"
+	q    docker-compose exec api bash -c "scripts/lint.sh && cat pylint_output.txt"
 }
 mochi_build_up() {
          aws-okta exec peloeng -- docker-compose build
