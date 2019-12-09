@@ -1,3 +1,13 @@
+
+
+
+function ssh_qa_1(){
+	 echo "running"
+	 aws-okta exec peloeng -- /usr/bin/env zsh
+	 aws_ssh `find_instance qa1 default-api`
+}
+
+
 function gcam(){
      # Assumes the branch name has the Jira ticket
          commit_message=$1

@@ -13,6 +13,7 @@
         ca = commit -a
         cm = commit -m
         cam = commit -am
+	camn = commit -am --no-verify
 	cle = clean -f
         #############
         p = pull
@@ -30,7 +31,8 @@
         ch = checkout
         #############
         d = diff
-        #############
+        dh = diff HEAD
+	#############
         l = log --oneline
         l0 = log --oneline --graph --decorate
         l1 = "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative"
