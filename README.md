@@ -3,6 +3,7 @@ All dotfiles kept under version control and symlinks are added to expected locat
 
 ## Setup
 `export repo_url=https://github.com/redSlug/dotfiles.git`
+
 `git clone $repo_url && cd dotfiles && ./install`
 
 ## Add
@@ -10,6 +11,8 @@ All dotfiles kept under version control and symlinks are added to expected locat
 - `./install` to create symlinks
 
 ## Troubleshooting
-- might need to manually create a hard symlink for `.gitconfig`, `ln gitconfig ~/.gitconfig`
+- might need to manually create a hard symlink for `.gitconfig`, 
+
+`ln gitconfig ~/.gitconfig`
 
 ## [More about dotbot](https://github.com/anishathalye/dotbot)
