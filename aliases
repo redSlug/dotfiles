@@ -8,6 +8,7 @@ alias cd_api='cd ~/Development/api'
 alias cd_chefrepo='cd ~/Development/chef-repo'
 
 # common
+alias g="git"
 alias e="emacs"
 alias so="source"
 alias zshconfig="e ~/.zshrc"
